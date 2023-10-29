@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Detail Form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">CV Detail Form</h1>
+
+        <form action="/creating" method="get" id=cvsubmitform>
+            <div class="mb-3">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Your name">
+            </div>
+
+            <div class="mb-3">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Your email">
+            </div>
+
+            <div class="mb-3">
+                <label for="phone">Phone Number:</label>
+                <input type="phone" class="form-control" id="phone" name="phone" placeholder="Your phone number">
+            </div>
+
+            <div class="mb-3">
+                <label for="address">Address:</label>
+                <input type="text" class="form-control" id="address" name="address" placeholder="Your address">
+            </div>
+
+            <div class="mb-3">
+                <label for="current_institution_name">Current Institution Name:</label>
+                <input type="text" class="form-control" id="current_institution_name" name="current_institution_name" placeholder="Your current institution name">
+            </div>
+
+            <div class="mb-3">
+                <label for="education">Education:</label>
+                <select class="form-select" id="education" name="education">
+                    <option value="Matric">Matric</option>
+                    <option value="Inter">Inter</option>
+                    <option value="Bachelor">Bachelor</option>
+                    <option value="Master">Master</option>
+                    <option value="PhD">PhD</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="about_me">About Me:</label>
+                <textarea class="form-control" id="about_me" name="about_me" rows="3"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="skills">Skills:</label>
+                <input type="text" class="form-control" id="skills" name="skills" placeholder="Enter your skills">
+            </div>
+
+            <button type="submit" id="cvsubmit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+<script>
+  document.getElementById('cvsubmit').addEventListener('click', function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const address = document.getElementById('address').value;
+    const currentInstitutionName = document.getElementById('current_institution_name').value;
+    const education = document.getElementById('education').value;
+    const aboutMe = document.getElementById('about_me').value;
+    const skills = document.getElementById('skills').value;
+
+
+    const urlSearchParams = new URLSearchParams();
+    urlSearchParams.append('name', name);
+    urlSearchParams.append('email', email);
+    urlSearchParams.append('phone', phone);
+    urlSearchParams.append('address', address);
+    urlSearchParams.append('currentInstitutionName', currentInstitutionName);
+    urlSearchParams.append('education', education);
+    urlSearchParams.append('aboutMe', aboutMe);
+    urlSearchParams.append('skills', skills);
+
+    const form = document.getElementById('cvsubmitform');
+    form.action = `/creating?${urlSearchParams.toString()}`;
+
+    form.submit();
+  });
+</script>
+
+  
+</html>
