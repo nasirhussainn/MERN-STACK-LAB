@@ -1,0 +1,47 @@
+1-
+use nasir_hussain_db
+
+
+
+2-3-
+db.personals_collection.insertMany([
+{Registration_number:"04072013040" , name:"Nasir Hussain" , City_name:"Skardu"} ,
+ {Registration_number:"04072013041" , name:"Sajjad Ali" , City_name:"Islamabad"},
+{Registration_number:"04072013042" , name:"Hashim Shah" , City_name:"Lahore"},
+{Registration_number:"04072013043" , name:"Asfand Yar" , City_name:"Karachi"},
+{Registration_number:"04072013044" , name:"Inam Khan" , City_name:"Rawalpindi"}
+])
+
+
+4-5
+db.academics_collection.insertMany([
+{Registration_number:"04072013040" , degree_enrolled:"BSCS" , enrollment_year:2020,favourite_course:"Web-Application Framework"} ,
+ {Registration_number:"04072013041" ,  degree_enrolled:"BSCS" , enrollment_year:2021,favourite_course:"Artificial Intelligence"},
+{Registration_number:"04072013042" ,  degree_enrolled:"BSCS" , enrollment_year:2018,favourite_course:"Natural Language Processing"},
+{Registration_number:"04072013043" ,  degree_enrolled:"BSCS" , enrollment_year:2017,favourite_course:"Data Mining"},
+{Registration_number:"04072013044" ,  degree_enrolled:"BSCS" , enrollment_year:2022,favourite_course:"Date Warehousing"}
+])
+
+
+6-db.personals_collection.find()
+6-db.academics_collection.find()
+
+7-
+db.personals_collection.find({City_name:"Rawalpindi"})
+
+8-
+db.academics_collection.find({enrollment_year:"2019"})
+
+
+9-
+db.personals_collection.updateMany(
+{City_name:{$in:["Rawalpindi","Islamabad"]}},
+{$set:{City_name:"Rawalpindi/Islamabad"}}
+)
+
+
+10-
+const deleteStdRecord = db.academics_collection.find({ enrollment_year: { $lt: 2019 } }, { Registration_number: 1 }).toArray();
+const registrationNumbersToDelete = deleteStdRecord.map(student => student.Registration_number);
+db.personals_collection.deleteMany({ Registration_number: { $in: registrationNumbersToDelete } });
+db.academics_collection.deleteMany({ Registration_number: { $in: registrationNumbersToDelete } });
