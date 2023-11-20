@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Info System</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .margin-top {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="mt-4"><%= titleName %></h1>
+    <hr class="mt-4">   
+  <table class="table table-bordered table-striped mt-4">
+    <thead class="thead-dark">
+      <tr>
+        <th>Name</th>
+        <th>Semester</th>
+        <th>Program</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><input disabled type="text" class="form-control name" value="<%= student.fullname %>" readonly></td>
+            <td><input disabled type="text" class="form-control semester" value="<%= student.semester %>" readonly></td>
+            <td><input disabled type="text" class="form-control program" value="<%= student.program %>" readonly></td>
+        </tr>
+        <tr>
+          <form action="/student/update" method="post">
+              <input type="text" value="<%= student._id %>" name="id" class="form-control name" hidden>
+              <td><input required type="text" name="fullname" class="form-control name" value="<%= student.fullname %>"></td>
+              <td><input required type="text" name="semester" class="form-control semester" value="<%= student.semester %>"></td>
+              <td><input required type="text" name="program" class="form-control program" value="<%= student.program %>"></td>
+              <td>
+                <button type="submit" class="btn btn-primary">Update</button>
+              </td>
+            </form>
+          </tr>
+      </tbody>
+    
+  </table>
+</div>
+
+
+</body>
+</html>

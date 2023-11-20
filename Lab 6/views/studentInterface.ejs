@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Info System</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .margin-top {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="mt-4"><%= titleName %></h1>
+
+    <form action="/student" method="post" class="mt-4">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input required type="text" class="form-control" id="name" name="fullname">
+      </div>
+
+      <div class="form-group">
+        <label for="semester">Semester:</label>
+        <input required type="text" class="form-control" id="semester" name="semester">
+      </div>
+
+      <div class="form-group">
+        <label for="program">Program:</label>
+        <input required type="text" class="form-control" id="program" name="program">
+      </div>
+      <button type="submit" class="btn btn-primary">Add Student</button>
+    </form>
+
+    <hr class="mt-4">
+
+
+    <div class="container">
+        <h1 class="mt-4">All Student Information</h1>
+        <% if (noStudents) { %>
+          <p>No students exist.</p>
+        <% } else if (error) { %>
+          <p>Error occurred while fetching data. Please try again.</p>
+        <% } else { %>
+         <form action="/updateStudent" method="post">
+  <table class="table table-bordered table-striped mt-4">
+    <thead class="thead-dark">
+      <tr>
+        <th>Name</th>
+        <th>Semester</th>
+        <th>Program</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% students.forEach(function(student) { %>
+        <tr>
+          <td><input type="text" class="form-control name" value="<%= student.fullname %>" readonly></td>
+          <td><input type="text" class="form-control semester" value="<%= student.semester %>" readonly></td>
+          <td><input type="text" class="form-control program" value="<%= student.program %>" readonly></td>
+          <td>
+            <a class="btn btn-danger" href="/student/delete/<%= student._id %>"><b>Delete</b></a>
+            <a class="btn btn-success" href="/student/edit/<%= student._id %>"><b>Edit</b></a>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</form>
+        <% } %>
+      </div>
+</body>
+</html>
