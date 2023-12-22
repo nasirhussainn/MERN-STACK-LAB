@@ -1,0 +1,43 @@
+.footer {
+    background-color: #474747;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+  
+  .footer-info,
+  .contact-info {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  h4 {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    color: #ffffff;
+  }
+  
+  p {
+    line-height: 1.6;
+    color: #ffffff;
+  }
+  
+  .contact-info p:first-child {
+    margin-top: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .footer {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .footer-info,
+    .contact-info {
+      margin-right: 0;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+  }
+  

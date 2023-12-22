@@ -1,0 +1,29 @@
+.sub-navbar {
+    background-color: #87c3ff;
+    padding: 10px 0;
+  }
+  
+  .sub-navbar-menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sub-navbar-menu li {
+    margin: 0 15px;
+  }
+  
+  .sub-navbar-menu li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  
+  .sub-navbar-menu li a:hover {
+    color: #007bff;
+  }
+  
