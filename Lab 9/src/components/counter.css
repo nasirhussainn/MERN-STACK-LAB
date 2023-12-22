@@ -1,0 +1,44 @@
+
+.counter-container {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .counter-value {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .error-message {
+    color: red;
+  }
+  
+  button {
+    padding: 8px 16px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #ddd;
+  }
+  
+  .increase-button {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .decrease-button {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .reset-button {
+    background-color: #2196f3;
+    color: white;
+  }
+  
